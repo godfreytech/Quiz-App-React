@@ -4,7 +4,7 @@ export class GetQuestions extends Component {
   constructor(props) {
     super(props);
 
-    // this.nextQuestion = this.nextQuestion.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
     this.index = 1;
     this.state = {
       question: "Loading..",
@@ -60,27 +60,24 @@ export class GetQuestions extends Component {
             ]
           });
         }
-
-        console.log(this.state.choices);
-
+        console.log(this.state.choices, "and", this.index);
         return null;
       });
   }
 
-  // nextQuestion() {
-  //   if (this.state.questionsList.length) {
-  //     this.setState({
-  //       question: this.state.questionsList[this.index],
-  //     });
-  //     this.index++;
-  //   }
-  // }
+  nextQuestion() {
+    this.setState({
+      question: this.state.questionsList[this.index]
+    });
+    this.index++;
+  }
 
   render() {
     return (
       <div>
         <h2>{this.state.question}</h2>
-        {/* <button onClick={this.nextQuestion}>Next</button> */}
+        <button onClick={this.nextQuestion}>Next</button>
+        {this.state.choices.map(item => null)}
       </div>
     );
   }
